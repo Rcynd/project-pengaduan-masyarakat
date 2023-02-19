@@ -65,7 +65,7 @@
                 @enderror
               </div>
               <div class="form-floating mt-3">
-                <input type="ulangi_password" name="ulangi_password" class="form-control @error('ulangi_password') is-invalid   @enderror" id="ulangi_password" placeholder="ulangi_Password" required>
+                <input type="password" name="ulangi_password" class="form-control @error('ulangi_password') is-invalid   @enderror" id="ulangi_password" placeholder="ulangi_Password" required>
                 <label for="ulangi_password">Ulangi Password</label>
                 @error('ulangi_password')
                 <div class="invalid-feedback">
