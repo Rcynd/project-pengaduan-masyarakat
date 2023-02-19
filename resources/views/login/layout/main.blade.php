@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <style>
-    main ,.h-login{
-  background: rgba(255, 255, 255, 0.04);
+  .h-login{
+  background: rgba(255, 175, 175, 0.9);
   border-radius: 20px;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -24,17 +24,34 @@
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+.bg-main{
+  background-color: #f0e0c9
+}
 .bg-hitam{
-  background-color: rgba(166, 188, 229, 0.4)
+  background-color: rgba(111, 114, 92,.8)
+}
+.bg-merah{
+  background-color: rgb(177, 49, 38,1)
 }
 .bg-hitam2{
       background-color: rgba(35, 114, 128, 0.3)
     }
+    .btnku{
+      border: 1px solid rgba(35, 114, 128, 0.3) ;
+    }
+    .btnku:hover{
+      transition: ease-out;
+      border:1px solid white;
+      background-color: #f0e0c9;
+      transform: scale(1.01);
+      color: black;
+    }
   </style>
-  <body class="bg-hitam">
-      <div class="" style="margin-top: 12%">
-        @yield('container')
-      </div>
+  <body class="bg-main">
+    <div class="d-flex justify-content-center" >
+      @yield('container')
+    </div>
+    
 
 
 
