@@ -28,10 +28,22 @@
   {{-- CSS Buatan --}}
   <style>
     .glass-card{
-  background: rgba(238, 235, 245, 0.7);
+  background: rgba(163, 142, 210,.5);
   border-radius: 20px;
-  border-left: 1px solid rgba(238, 235, 245, 0.7);
-  border-top: 1px solid rgba(238, 235, 245, 0.7);
+  border-left: 1px solid rgba(238, 235, 245, 0.3);
+  border-top: 1px solid rgba(238, 235, 245, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+    .glass-cardi{
+  background-image: rgba(163, 142, 210,.0);
+  border-radius: 20px;
+  border-left: 1px solid rgba(238, 235, 245, 0.3);
+  border-top: 1px solid rgba(238, 235, 245, 0.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -40,19 +52,14 @@
   transition: all 0.2s ease-in-out;
 }
 .bg-main{
-  background-color: rgb(163, 142, 210);
-  background-image: linear-gradient(225deg,rgb(163, 142, 210),rgb(249, 193, 235));
+  background-image: linear-gradient(125deg,rgb(163, 142, 210),rgb(249, 193, 235));
   background-repeat: no-repeat;
 }
-.bg-hitam{
-  background-color: rgb(163, 142, 210);
-
-}
-.bg-sidebar{
-  background-image: linear-gradient(320deg,rgb(249, 193, 235),rgb(163, 142, 210));
+.bg-hitam,.bg-sidebar{
+  background-color: rgba(163, 142, 210,.5)
 }
 .bg-merah{
-  background-color: rgb(177, 49, 38,1)
+  background-color: rgba(249, 193, 235,.3)
 }
     /* .bg-hitam{
       background-color: rgba(86, 128, 207, 0.4)
@@ -80,34 +87,30 @@
       background: rgba(238, 235, 245, 0.7);
       transition: ease-in;
     }
+    .link{
+      text-decoration: none;
+    }
     .hov:hover{
       color: white
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<body class="bg-main">
+<div class="">
 
-  <!-- Preloader -->
-  {{-- <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('') }}adminlte/img/download.jpg" alt="AdminLTELogo" height="100" width="100">
-  </div> --}}
 
   <!-- Navbar -->
-  @include('layouts.mainbar')
+  @include('welcome.layout.mainbar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('layouts.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper bg-main mr-0">
+  
     @yield('content')
-  </div>
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->

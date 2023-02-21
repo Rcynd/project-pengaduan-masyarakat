@@ -1,5 +1,5 @@
 
-<nav class="main-header navbar navbar-expand bg-hitam2 navbar-light">
+<nav class="main-header navbar navbar-light bg-hitam">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -19,7 +19,8 @@
           <div class="nav-item text-nowrap">
             <form action="/logout" method="post">
               @csrf
-              <button type="submit" class="nav-link bg-light shadow-lg btn btn-none border-none" onclick="return confirm('Yakin ingin melakukan Logout?')">Logout <span data-feather="log-out"></span></button>
+              <label for="logout" class="link font-weight-normal mt-2 hov" onclick="return confirm('Yakin ingin melakukan Logout?')" style="background-image: rgba(0,0,0,0)" >Logout <i class="nav-icon fas fa-arrow-circle-right"></i></label>
+              <input type="submit" id="logout" value="" style="background-color: rgba(0,0,0,0); border: none;z-index:-99909; position:absolute;">
             </form>
           </div>
             

@@ -31,7 +31,7 @@
       </a>
     </div> --}}
     <div class="col-lg-12 justify-content-center">
-      <div class=" fw-normal text-center h3 mb-4 p-2 text-light">
+      <div class=" fw-normal text-center h3 mb-4 p-2 text-dark">
         Registrasi Aduken
       </div>
       <form action="/register" method="post" enctype="multipart/form-data">
@@ -92,11 +92,11 @@
           @enderror
         </div>
         <div class="d-flex justify-content-between">
-          <label for="submin" type="submit" style="text-decoration: none" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-light">
+          <label for="submin" type="submit" style="text-decoration: none" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-dark">
             <p class="p-0 m-0 bg-hitam rounded-pill btnku p-2 shadow-md"> Register Akun</p> 
           </label>
           <input id="submin" type="submit" value="" style="background-color: rgba(0,0,0,0); border: none;z-index:-99909;">
-          <a href="{{ asset('') }}login" style="text-decoration: none" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-light">
+          <a href="{{ asset('') }}login" style="text-decoration: none" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-dark">
             <p class="p-0 m-0 bg-hitam rounded-pill btnku p-2 shadow-md"> Login Aduken</p> 
           </a>
         </div>

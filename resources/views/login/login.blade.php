@@ -1,6 +1,6 @@
 @extends('login.layout.main')
 @section('container')
-<div class="card col-lg-9 rounded-4 bg-hitam p-0 " style="margin-top: 11%">
+<div class="card col-lg-9 rounded-4 h-login p-0 " style="margin-top: 11%">
 
 <div class=" d-flex justify-content-center">
   <div class="">
@@ -23,7 +23,7 @@
   </div>
   <main class="col-lg-7 rounded-0 p-4 bg-merah d-flex justify-content-between align-items-end">
     <div class="col-lg-7 justify-content-center">
-      <div class=" fw-normal text-center h3 mb-4 p-2 text-light">
+      <div class=" fw-normal text-center h3 mb-4 p-2 text-dark">
         Login Aduken
       </div>
             <form action="/login" method="post" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
                 <label for="password">Password</label>
               </div>
               <input id="submin" type="submit" value="" style="background-color: rgba(0,0,0,0); border: none;z-index:-99909; position:absolute;">
-              <label for="submin" type="submit" style="text-decoration: none; width:100%;" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-light" >
+              <label for="submin" type="submit" style="text-decoration: none; width:100%;" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-dark" >
                 <p class="p-0 m-0 bg-hitam rounded-pill btnku p-2 shadow-md"> Log in</p> 
               </label>
             </form>
@@ -52,7 +52,7 @@
             <p class="text-center m-0 mb-3 p-0">
               <img src="{{ asset('') }}adminlte/img/boxed-bg.png" width="50%" class="img-fluid img-sm mb-4 rounded-circle" alt="">
             </p>
-            <a href="{{ asset('') }}register" style="text-decoration: none" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-light">
+            <a href="{{ asset('') }}register" style="text-decoration: none" class="fw-normal text-center rounded-0 m-0 mt-4 pt-0 pb-0 text-dark">
               <p class="p-0 m-0 bg-hitam rounded-pill btnku p-2 shadow-md"> Registrasi Akun</p> 
             </a>
           </div>

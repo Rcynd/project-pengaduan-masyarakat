@@ -15,10 +15,9 @@ use App\Http\Controllers\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/a', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('welcome.welcome');
 });
-
 
 Route::middleware('guest')->group(function () {
 
@@ -37,9 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',[DashboardController::class , 'index']);
 
     
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    
     Route::get('/welcome', function(){
         return view('contekan');
     });

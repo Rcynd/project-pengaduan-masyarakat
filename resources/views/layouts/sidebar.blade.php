@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
         <img src="{{ asset('') }}adminlte/img/download.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light text-light">Aduken</span>
+        <span class="brand-text font-weight-bold text-light">ADUKEN</span>
       </a>
   
     <!-- Sidebar -->
@@ -36,7 +36,7 @@
                with font-awesome or any other icon font library -->
           {{-- @can('petugas') --}}
           <li class="nav-item">
-            <a href="/dashboard" class="nav-link text-light {{ Request::is('dashboard*') ? 'bg-dark' : '' }} ">
+            <a href="/dashboard" class="nav-link text-light {{ Request::is('dashboard*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -46,7 +46,7 @@
           {{-- @endcan --}}
           {{-- @can('admin') --}}
           <li class="nav-item">
-            <a href="/registrasi" class="nav-link text-light{{ Request::is('registrasi*') ? 'bg-dark' : '' }} ">
+            <a href="/registrasi" class="nav-link text-light{{ Request::is('registrasi*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-user-plus"></i>
               <p class="">
                 Registrasi
@@ -54,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/pengaduan" class="nav-link text-light {{ Request::is('pengaduan*') ? 'bg-dark' : '' }} ">
+            <a href="/pengaduan" class="nav-link text-light {{ Request::is('pengaduan*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-exclamation-circle"></i>
               <p>
                 Pengaduan
@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/respon" class="nav-link text-light {{ Request::is('respon*') ? 'bg-dark' : '' }} ">
+            <a href="/respon" class="nav-link text-light {{ Request::is('respon*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-comments"></i>
               <p>
                 Respon
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/laporan" class="nav-link text-light {{ Request::is('laporan*') ? 'bg-dark' : '' }} ">
+            <a href="/laporan" class="nav-link text-light {{ Request::is('laporan*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Laporan
@@ -80,7 +80,7 @@
           {{-- @endcan --}}
           {{-- @can('petugas') --}}
           {{-- <li class="nav-item">
-            <a href="/transaksi" class="nav-link text-light {{ Request::is('transaksi*') ? 'bg-dark' : '' }} ">
+            <a href="/transaksi" class="nav-link text-light {{ Request::is('transaksi*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-credit-card"></i>
               <p>
                 transaksi pembayaran
@@ -89,7 +89,7 @@
           </li> --}}
           {{-- @endcan --}}
           {{-- <li class="nav-item">
-            <a href="/histori" class="nav-link text-light {{ Request::is('histori*') ? 'bg-dark' : '' }} ">
+            <a href="/histori" class="nav-link text-light {{ Request::is('histori*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-history"></i>
               <p>
                 History Pembayaran

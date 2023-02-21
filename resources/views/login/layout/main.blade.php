@@ -12,10 +12,10 @@
   </head>
   <style>
   .h-login{
-  background: rgba(255, 175, 175, 0.9);
+  background: rgba(163, 142, 210,.5);
   border-radius: 20px;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(249, 193, 235,.3);
+  border-top: 1px solid rgba(249, 193, 235,.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -24,14 +24,20 @@
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+.bg-main-m{
+
+  background:#a38ed2 ;
+}
 .bg-main{
-  background-color: #f0e0c9
+  /* background-color: #a38ed2; */
+  background-image: linear-gradient(125deg,rgb(163, 142, 210),rgb(249, 193, 235));
+  background-repeat: no-repeat;
 }
 .bg-hitam{
-  background-color: rgba(111, 114, 92,.8)
+  background-color: rgba(163, 142, 210,.5)
 }
 .bg-merah{
-  background-color: rgb(177, 49, 38,1)
+  background-color: rgba(249, 193, 235,.3)
 }
 .bg-hitam2{
       background-color: rgba(35, 114, 128, 0.3)
@@ -47,8 +53,8 @@
       color: black;
     }
   </style>
-  <body class="bg-main">
-    <div class="d-flex justify-content-center" >
+  <body class="bg-main-m bg-main"style="height:625px;">
+    <div class="d-flex justify-content-center bg-main">
       @yield('container')
     </div>
     
