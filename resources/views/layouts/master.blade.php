@@ -39,6 +39,50 @@
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+    .glass-card-t{
+  background: rgba(238, 235, 245, 0.2);
+  border-radius: 20px;
+  border-left: 1px solid rgba(238, 235, 245, 0.2);
+  border-top: 1px solid rgba(238, 235, 245, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+    .glass-card-btn{
+  background: rgba(163, 142, 210, 1);
+  border-radius: 20px;
+  border-left: 1px solid rgba(163, 142, 210, 1);
+  border-top: 1px solid rgba(163, 142, 210, 1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+    .glass-card-btn:hover{
+  background: rgb(226, 218, 245);
+  transition: all ease-out;
+}
+    .glass-card-btn2{
+  background: rgba(249, 193, 235, 1);
+  border-radius: 20px;
+  border-left: 1px solid rgba(249, 193, 235, 1);
+  border-top: 1px solid rgba(249, 193, 235, 1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+    .glass-card-btn2:hover{
+  background: rgb(219, 132, 199);
+  transition: all ease-out;
+}
 .bg-main{
   background-color: rgb(163, 142, 210);
   background-image: linear-gradient(225deg,rgb(163, 142, 210),rgb(249, 193, 235));
@@ -51,8 +95,8 @@
 .bg-sidebar{
   background-image: linear-gradient(320deg,rgb(249, 193, 235),rgb(163, 142, 210));
 }
-.bg-merah{
-  background-color: rgb(177, 49, 38,1)
+.bg-pink{
+  background-color: rgba(249, 193, 235,.3)
 }
     /* .bg-hitam{
       background-color: rgba(86, 128, 207, 0.4)
@@ -89,6 +133,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__wobble" src="{{ asset('') }}adminlte/img/download.jpg" alt="SMKBN666_Logo" height="60" width="60">
+  </div>
   {{-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{ asset('') }}adminlte/img/download.jpg" alt="AdminLTELogo" height="100" width="100">
   </div> --}}

@@ -39,4 +39,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function scopeFilter($query, array $filters){
+        $query->when($filters['search'] ?? false, function($query, $search){
+            return $query->where('nama_petugas','like','%'. $search .'%')
+            ->orWhere('username','like',$search . '%')
+            ->orWhere('telp','like',$search . '%')
+            ->orWhere('level','like','%'. $search .'%')
+            ;
+        });
+    }
 }

@@ -18,7 +18,7 @@
       </div>
   
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      <div class="form-inline ">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -46,7 +46,7 @@
           {{-- @endcan --}}
           {{-- @can('admin') --}}
           <li class="nav-item">
-            <a href="/registrasi" class="nav-link text-light{{ Request::is('registrasi*') ? 'bg-hitam rounded-pill' : '' }} ">
+            <a href="/registrasi" class="nav-link text-light {{ Request::is('registrasi*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-user-plus"></i>
               <p class="">
                 Registrasi
@@ -65,7 +65,7 @@
             <a href="/respon" class="nav-link text-light {{ Request::is('respon*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-comments"></i>
               <p>
-                Respon
+                Tanggapan
               </p>
             </a>
           </li>

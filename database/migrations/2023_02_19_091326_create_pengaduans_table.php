@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pengaduans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('nik');
+            $table->foreignId('id_masyarakat');
             $table->date('tgl_pengaduan');
             $table->text('isi_laporan');
             $table->string('foto');
