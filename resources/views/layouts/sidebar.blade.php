@@ -49,7 +49,15 @@
             <a href="/registrasi" class="nav-link text-light {{ Request::is('registrasi*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-user-plus"></i>
               <p class="">
-                Registrasi
+                Data Petugas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/masyarakat" class="nav-link text-light {{ Request::is('masyarakat*') ? 'bg-hitam rounded-pill' : '' }} ">
+              <i class="nav-icon fas fa-user-plus"></i>
+              <p class="">
+                Data Masyarakat
               </p>
             </a>
           </li>
@@ -62,7 +70,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/respon" class="nav-link text-light {{ Request::is('respon*') ? 'bg-hitam rounded-pill' : '' }} ">
+            <a href="/tanggapan" class="nav-link text-light {{ Request::is('tanggapan*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-comments"></i>
               <p>
                 Tanggapan

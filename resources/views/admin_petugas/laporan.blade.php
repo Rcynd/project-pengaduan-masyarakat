@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <h1 class="text-center pt-2 pb-2">Halaman Registrasi Petugas</h1>
+    <h1 class="text-center pt-2 pb-2">Halaman Registrasi</h1>
   @if (session()->has('sukses'))
   <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
     <div class="text-success d-flex justify-content-center align-items-center">
@@ -14,11 +14,7 @@
             <div class="col-12">
               <div class="card glass-card-t">
                 <div class="card-header bg-none">
-                    <a href="{{ asset('') }}registrasi/create" class="btn float-left tombol-tambah mt-2">Tambah Registrasi</a>
-                    {{-- <a href="{{ asset('') }}cetak-siswa" target="blank_" class="btn ml-2 float-left tombol-tambah mt-2">Cetak Siswa</a> --}}
-                  {{-- <p class="btn float-left tombol-tambah mt-2" data-toggle="modal" data-target="#modal-lg">Tambah Siswa</p> --}}
-    
-                      <form class="input-group input-group-sm col-lg-5 mr-2 mt-3 float-right" action="/registrasi" method="get">
+                      <form class="input-group input-group-sm col-lg-5 mr-2 mt-3 float-right" action="/pengaduan" method="get">
                         @csrf
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search.." name="search" value="">
@@ -31,40 +27,55 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>No Telepon</th>
-                        <th>Level</th>
+                        <th>Nama Petugas</th>
+                        <th>Nama Pengadu</th>
+                        <th>tanggal diTanggapi</th>
+                        <th>status</th>
+                        <th>isi tanggapan</th>
                         {{-- <th>id_spp</th> --}}
                         <th class="text-right">aksi</th>
                       </tr>
                     </thead>
                     <tbody class="p-0">
-                        @foreach ($users as $user)
+                        @foreach ($tanggapans as $tanggapan)
+                        @if ($tanggapan->pengaduan->status == 'selesai')
                         <tr>
-                          <td>{{ $user->nama_petugas }}</td>
-                          <td>{{ $user->username }}</td>
-                          <td>{{ $user->telp }}</td>
-                          <td>{{ $user->level }}</td>
+                            <td>{{ $tanggapan->petugas->nama_petugas }}</td>
+                            <td>{{ $tanggapan->pengaduan->masyarakat->nama }}</td>
+                            <td>{{ $tanggapan->tgl_tanggapan }}</td>
+                            @if ($tanggapan->pengaduan->status == '0')
+                          <td class="text-danger">Menunggu</td>
+                          @elseif($tanggapan->pengaduan->status == 'proses')
+                          <td class="text-primary">diProses</td>
+                          @else
+                          <td class="text-success">Selesai</td>
+                          @endif
+                          <td>{{ $tanggapan->tanggapan }}</td>
                           {{-- <td>{{ $user->id_spp }}</td> --}}
                           <td class="d-flex justify-content-end">
                             <p class="text-dark" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-circle mr-2 hov"></i></p>
                             <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
-                                <a href="{{ asset('') }}registrasi/edit/{{ $user->username }}" class="dropdown-item">
-                                    Edit
+                                <a href="{{ asset('') }}tanggapan/detail/{{ $tanggapan->id }}" class="dropdown-item">
+                                    detail
                                 </a>
-                                <a href="{{ asset('') }}registrasi/hapus/{{ $user->username }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
-                                    Hapus
+                                @if ($tanggapan->pengaduan->status == 'proses')
+                                <a href="{{ asset('') }}tanggapan/selesai/{{ $tanggapan->pengaduan->id }}" class="dropdown-item">
+                                    selesai
+                                </a>
+                                @endif
+                                <a href="{{ asset('') }}tanggapan/hapus/{{ $tanggapan->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
+                                    hapus
                                 </a>
                             </div>
-                          </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
                   </table>
                 </div>
                 <div class="d-flex justify-content-end mr-5 mt-2">
-                  {{ $users->links() }}
+                  {{ $tanggapans->links() }}
                 </div>
                 <!-- /.card-body -->
               </div>

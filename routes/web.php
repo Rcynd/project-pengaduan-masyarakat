@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TanggapanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +47,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/registrasi/edit/{user:username}', [RegisterController::class, 'update']);
     Route::get('/registrasi/hapus/{user:username}', [RegisterController::class, 'destroy']);
 
+    // Masyarakat Route
+    Route::get('/masyarakat',[MasyarakatController::class , 'index']);
+    Route::get('/masyarakat/create',[MasyarakatController::class , 'create']);
+    Route::post('/masyarakat/create',[MasyarakatController::class , 'push']);
+    Route::get('/masyarakat/edit/{user:username}', [MasyarakatController::class, 'edit']);
+    Route::post('/masyarakat/edit/{user:username}', [MasyarakatController::class, 'update']);
+    Route::get('/masyarakat/hapus/{user:username}', [MasyarakatController::class, 'destroy']);
+
     // Pengaduan Route
     Route::get('/pengaduan',[PengaduanController::class , 'index']);
     Route::get('/pengaduan/create',[PengaduanController::class , 'create']);
@@ -56,6 +67,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pengaduan/reset/{user:id}', [PengaduanController::class, 'reset']);
     Route::get('/pengaduan/detail/{user:id}', [PengaduanController::class, 'detail']);
     
+    // Tanggapan Route
+    Route::get('/tanggapan',[TanggapanController::class , 'index']);
+    Route::post('/tanggapan/create',[TanggapanController::class , 'store']);
+    Route::get('/tanggapan/detail/{user:id}', [TanggapanController::class, 'detail']);
+    Route::get('/tanggapan/selesai/{user:id}', [PengaduanController::class, 'selesai']);
+
+    // Tanggapan Route
+    Route::get('/laporan',[LaporanController::class , 'index']);
+    Route::post('/laporan/create',[LaporanController::class , 'store']);
+    Route::get('/laporan/detail/{user:id}', [LaporanController::class, 'detail']);
     
     Route::get('/welcome', function(){
         return view('contekan');

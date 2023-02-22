@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tanggapan;
-use App\Models\Pengaduan;
 
-class TanggapanController extends Controller
+class LaporanController extends Controller
 {
     public function index(){
         $tanggapan = Tanggapan::latest()->filter(request(['search']))->paginate(8)->withQueryString();
-        return view('admin_petugas.tanggapan',[
+        return view('admin_petugas.laporan',[
             'tanggapans' => $tanggapan,
         ]);
     }
@@ -41,7 +40,7 @@ class TanggapanController extends Controller
 
     public function detail($id){
         $tanggapan = Tanggapan::where('id',$id)->first();
-        return view('admin_petugas.tanggapan-detail',[
+        return view('admin_petugas.laporan-detail',[
             'tanggapan' => $tanggapan,
         ]);
     }

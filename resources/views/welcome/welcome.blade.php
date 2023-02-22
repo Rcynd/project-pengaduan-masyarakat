@@ -6,7 +6,7 @@
             Selamat Datang! di ADUKEN
         </h1>
         <p>
-            aplikasi untuk mengadukan aspurasi rakyat 
+            aplikasi untuk mengadukan aspirasi rakyat 
         </p>
     </div>
     <div class="col-lg-4 shadow-md">

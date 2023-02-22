@@ -155,7 +155,7 @@ class PengaduanController extends Controller
         ]);
         // Transaksi::where('id_siswa',$siswa[1])->delete();
         
-        return redirect('/pengaduan');
+        return redirect('/tanggapan');
     }
     public function proses($id){
         Pengaduan::where('id',$id)->update([

@@ -60,11 +60,9 @@ class RegisterController extends Controller
         return redirect('/login')->with('sukses', 'Registration berhasil! silahkan Login');
     }
     public function admin(){
-        $user = User::latest()->filter(request(['search']))->paginate(8)->withQueryString();
+        $user = User::where('level','admin')->orWhere('level','petugas')->latest()->filter(request(['search']))->paginate(8)->withQueryString();
         return view('admin_petugas.register',[
             'users' => $user,
-            'title' => 'Register',
-            'active' => 'register'
         ]);
     }
 

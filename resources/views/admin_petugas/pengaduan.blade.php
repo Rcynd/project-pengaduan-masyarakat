@@ -48,7 +48,7 @@
                             @if ($pengaduan->status == '0')
                             <td class="text-danger">Menunggu</td>
                             @elseif($pengaduan->status == 'proses')
-                            <td class="text-warning">diProses</td>
+                            <td class="text-primary">diProses</td>
                             @else
                             <td class="text-success">Selesai</td>
                             @endif
@@ -59,17 +59,9 @@
                                 <a href="{{ asset('') }}pengaduan/detail/{{ $pengaduan->id }}" class="dropdown-item">
                                     detail
                                 </a>
-                                @if ($pengaduan->status == 'proses')
-                                <a href="{{ asset('') }}pengaduan/selesai/{{ $pengaduan->id }}" class="dropdown-item">
-                                    selesai
-                                </a>
-                                @elseif($pengaduan->status == 'selesai')
-                                <a href="{{ asset('') }}pengaduan/reset/{{ $pengaduan->id }}" class="dropdown-item">
-                                    reset
-                                </a>
-                                @else
-                                <a href="{{ asset('') }}pengaduan/proses/{{ $pengaduan->id }}" class="dropdown-item">
-                                    proses
+                                @if ($pengaduan->status == '0')
+                                <a href="{{ asset('') }}pengaduan/detail/{{ $pengaduan->id }}/#tanggapan" class="dropdown-item">
+                                  tanggapi
                                 </a>
                                 @endif
                                 <a href="{{ asset('') }}pengaduan/hapus/{{ $pengaduan->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
