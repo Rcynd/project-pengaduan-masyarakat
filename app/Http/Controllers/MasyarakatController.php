@@ -16,12 +16,26 @@ class MasyarakatController extends Controller
         ]);
     }
 
+    public function validasi(Request $request,$nik){
+        $validatedData = $request->validate([
+            'nama_petugas' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'telp' => 'required',
+            'level' => 'required'
+        ]);
+        User::create($validatedData);
+        Masyarakat::where('nik',$nik)->update(['isValidate' => 'Validated']);
+        return redirect('/masyarakat')->with('sukses', 'User berhasil diValidasi! sekarang Akun sudah dapat digunakan');
+    }
+
+
     public function create(){
         return view('admin_petugas.masyarakat-create');
     }
     public function push(Request $request){
         $validatedData = $request->validate([
-            'nik' => 'required|numeric|max:9999999999999999',
+            'nik' => 'required|numeric|max:9999999999999999|unique:masyarakats',
             'nama' => 'required|max:36',
             'username' => 'required|min:3|max:25|unique:users|unique:masyarakats',
             'password' => 'required|min:6|max:255',
@@ -29,6 +43,7 @@ class MasyarakatController extends Controller
             'telp' => 'required|numeric',
         ],[
             'nik.require' => 'isi NIK terlebih dahulu',
+            'nik.unique' => 'NIK sudah Terdaftar!',
             'nik.numeric' => 'NIK harus berupa angka!',
             'nik.max' => 'NIK tidak boleh lebih dari 16 nomor!',
             
@@ -41,14 +56,15 @@ class MasyarakatController extends Controller
             'username.unique' => 'Username sudah terdaftar!',
             
             'password.min' => 'Password harus lebih dari 6 karakter!',
+            'password.required' => 'Password tidak boleh kosong!',
             'ulangi_password.min' => 'Password harus lebih dari 6 karakter!',
             'ulangi_password.same' => 'Password tidak serasi!',
 
             'telp.numeric' => 'nomor telepon harus berupa angka!',
         ]);
         // $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
+        $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['isValidate'] = 'Validated';
         Masyarakat::create($validatedData);
         User::create([
             'nama_petugas' => $validatedData['nama'],
@@ -61,53 +77,12 @@ class MasyarakatController extends Controller
         // $request->session()->flash('success', 'Registration successfull! please Login');
 
 
-        return redirect('/masyarakat')->with('sukses', 'Registration berhasil! silahkan Login');
+        return redirect('/masyarakat')->with('sukses', 'Registration berhasil! Akun sudah dapat login');
     }
     
-    public function edit($username){
-        $dataUser = User::where('username',$username)->first();
-        return view('admin_petugas.register-edit',[
-            'user' => $dataUser,
-        ]);
-    }
-    public function update(Request $request , $username){
-        $validateData = $request->validate([
-            'nama_petugas' => 'required|max:255',
-            'username' => 'required',
-            'password' => 'same:ulangi_password',
-            'telp' => 'required|numeric|digits_between:11,13',
-            'level' => 'required'
-        ],[
-            'nama_petgas.required' => 'Silahkan Isi nama terlebih dahulu!',
-
-            'username.required' => 'Silahkan Isi username terlebih dahulu!',
-            'username.unique' => 'Username sudah terdaftar!',
-
-            'password.same' => 'Password dan Ulangi password harus sama!',
-
-            'telp.numeric' => 'Nomor telepon harus berupa angka!',
-            'telp.digits_between' => 'Nomor telepon harus diantara 10 - 13 nomor!',
-        ]);
-        if (isset($validateData['password'])) {
-            $validateData['password'] = bcrypt( $validateData['password']);
-            User::where('username',$username)->update($validateData);
-            return redirect('/registrasi')->with('sukses','Data User berhasil diUbah beserta Passwordnya!');
-        }
-        
-        User::where('username',$username)->update([
-            'nama_petugas' => $validateData['nama_petugas'],
-            'username' => $validateData['username'],
-            'telp' => $validateData['telp'],
-            'level' => $validateData['level'],
-            ]
-        );
-        return redirect('/registrasi')->with('sukses','Data User berhasil diUbah!');
-    }
-
     public function destroy($username){
         Masyarakat::where('username',$username)->delete();
         User::where('username',$username)->delete();
-        // Transaksi::where('id_siswa',$siswa[1])->delete();
         
         return redirect('/masyarakat')->with('sukses','Data Masyarakat berhasil diHapus!');
     }

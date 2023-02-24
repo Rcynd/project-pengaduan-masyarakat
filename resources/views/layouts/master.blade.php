@@ -52,10 +52,10 @@
   transition: all 0.2s ease-in-out;
 }
     .glass-card-btn{
-  background: rgba(163, 142, 210, 1);
+  background: rgba(21, 207, 136, 1);
   border-radius: 20px;
-  border-left: 1px solid rgba(163, 142, 210, 1);
-  border-top: 1px solid rgba(163, 142, 210, 1);
+  border-left: 1px solid rgba(21, 207, 136, 1);
+  border-top: 1px solid rgba(21, 207, 136, 1);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -68,10 +68,10 @@
   transition: all ease-out;
 }
     .glass-card-btn2{
-  background: rgba(249, 193, 235, 1);
+  background: rgba(152, 251, 152, 1);
   border-radius: 20px;
-  border-left: 1px solid rgba(249, 193, 235, 1);
-  border-top: 1px solid rgba(249, 193, 235, 1);
+  border-left: 1px solid rgba(152, 251, 152, 1);
+  border-top: 1px solid rgba(152, 251, 152, 1);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -80,20 +80,20 @@
   transition: all 0.2s ease-in-out;
 }
     .glass-card-btn2:hover{
-  background: rgb(219, 132, 199);
+  background: rgb(226, 218, 245);
   transition: all ease-out;
 }
 .bg-main{
-  background-color: rgb(163, 142, 210);
-  background-image: linear-gradient(225deg,rgb(163, 142, 210),rgb(249, 193, 235));
+  background-color: rgb(14, 51, 37);
+  background-image: linear-gradient(225deg,rgb(184, 255, 175),rgb(152, 251, 152));
   background-repeat: no-repeat;
 }
 .bg-hitam{
-  background-color: rgb(163, 142, 210);
+  background-color: rgb(21, 207, 136);
 
 }
 .bg-sidebar{
-  background-image: linear-gradient(320deg,rgb(249, 193, 235),rgb(163, 142, 210));
+  background-image: linear-gradient(320deg,rgb(0, 0, 0),rgb(14, 51, 37));
 }
 .bg-pink{
   background-color: rgba(249, 193, 235,.3)
@@ -125,19 +125,20 @@
       transition: ease-in;
     }
     .hov:hover{
-      color: white
+      color: rgb(21, 207, 136)
+    }
+    .hov{
+      color: rgb(255, 255, 255)
     }
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+ 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="{{ asset('') }}adminlte/img/download.jpg" alt="SMKBN666_Logo" height="60" width="60">
-  </div>
   {{-- <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('') }}adminlte/img/download.jpg" alt="AdminLTELogo" height="100" width="100">
+    <img class="animation__wobble" src="{{ asset('') }}adminlte/img/download.jpg" alt="SMKBN666_Logo" height="60" width="60">
   </div> --}}
 
   <!-- Navbar -->

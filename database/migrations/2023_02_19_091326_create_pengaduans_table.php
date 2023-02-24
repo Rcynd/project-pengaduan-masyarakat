@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('id_masyarakat');
             $table->date('tgl_pengaduan');
             $table->text('isi_laporan');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->enum('status',['0','proses','selesai']);
             $table->timestamps();
         });

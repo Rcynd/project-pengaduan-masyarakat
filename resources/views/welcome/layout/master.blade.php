@@ -28,10 +28,10 @@
   {{-- CSS Buatan --}}
   <style>
     .glass-card{
-  background: rgba(163, 142, 210,.5);
+  background: rgba(14, 51, 37,.5);
   border-radius: 20px;
-  border-left: 1px solid rgba(238, 235, 245, 0.3);
-  border-top: 1px solid rgba(238, 235, 245, 0.3);
+  border-right: 1px solid rgba(238, 235, 245, 0.3);
+  border-bottom: 1px solid rgba(238, 235, 245, 0.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -40,7 +40,7 @@
   transition: all 0.2s ease-in-out;
 }
     .glass-cardi{
-  background-image: rgba(163, 142, 210,.0);
+  background: rgba(14, 51, 37,.5);
   border-radius: 20px;
   border-left: 1px solid rgba(238, 235, 245, 0.3);
   border-top: 1px solid rgba(238, 235, 245, 0.3);
@@ -52,11 +52,11 @@
   transition: all 0.2s ease-in-out;
 }
 .bg-main{
-  background-image: linear-gradient(125deg,rgb(163, 142, 210),rgb(249, 193, 235));
+  background-image: linear-gradient(125deg,rgb(14, 51, 37),rgb(0, 0, 0));
   background-repeat: no-repeat;
 }
 .bg-hitam,.bg-sidebar{
-  background-color: rgba(163, 142, 210,.5)
+  background-color: rgba(14, 51, 37,.4)
 }
 .bg-merah{
   background-color: rgba(249, 193, 235,.3)
@@ -91,7 +91,7 @@
       text-decoration: none;
     }
     .hov:hover{
-      color: white
+      color: rgb(21, 207, 136)
     }
   </style>
 </head>

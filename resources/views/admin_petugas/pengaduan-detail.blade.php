@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Tanggapi</h1>
+          <h1>Detail Pengaduan</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -42,7 +42,7 @@
                   <div class="detail ml-5">
                     <h2 class="mt-3 text-center">Detail Pengaduan</h2>
                     <div class="image img-fluid d-flex justify-content-center col-lg-12 mb-4">
-                      <img src="{{ asset('') }}adminlte/img/photo2.png" class="col-lg-6 rounded-3 m-0 p-0 shadow-sm" alt="">
+                      <img src="{{ asset('storage/'. $pengaduan->foto) }}" class="col-lg-6 rounded-3 m-0 p-0 shadow-sm" alt="">
                     </div>
                   </div>
                   <div class="col-lg-12 d-flex justify-content-center mb-5">
@@ -54,9 +54,9 @@
                       <ul class="mt-2" style="list-style:none;">
                         <li><p>Tanggal pengaduan : <br> <b>{{ $pengaduan->tgl_pengaduan }}</b></p></li>
                         <li><p>Status :<br>
-                          @if ( $pengaduan->isi_laporan === 'proses')
+                          @if ( $pengaduan->status === 'proses')
                             <b class="text-primary">sedang Diproses</b>
-                          @elseif( $pengaduan->isi_laporan  === 'selesai')
+                          @elseif( $pengaduan->status  === 'selesai')
                             <b class="text-success">sudah Selesai</b>
                           @else
                             <b class="text-danger">Menunggu</b>
@@ -65,8 +65,8 @@
                       </ul>
                     </div>
                   </div>
-                  @if ($pengaduan->status == '0')
                   <hr>
+                  @if ($pengaduan->status == '0')
                     <!-- form start -->
                     <form method="post" action="{{ asset('') }}tanggapan/create" class="mb-5" enctype="multipart/form-data">
                         @csrf
@@ -90,6 +90,8 @@
                         <button type="submit" class="btn text-dark float-right glass-card-btn2">Kirim</button>
                       </div>
                     </form>
+                    @else
+                    <a class="btn glass-card-btn mb-4 ml-4" href="{{ asset('') }}pengaduan">Kembali</a>
                     @endif
 
                   </div>

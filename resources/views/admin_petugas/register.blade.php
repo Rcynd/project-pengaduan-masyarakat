@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+
     <h1 class="text-center pt-2 pb-2">Halaman Registrasi Petugas</h1>
   @if (session()->has('sukses'))
   <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">

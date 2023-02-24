@@ -13,7 +13,12 @@ class Tanggapan extends Model
 
     public function scopeFilter($query, array $filters){
         $query->when($filters['search'] ?? false, function($query, $search){
-            return $query->where('tgl_tanggapan','like','%'. $search .'%')
+            return $query->whereHas('petugas', function($query) use ($search){
+                $query->where('nama_petugas','like','%' . $search . '%')
+                ->orWhere('username','like','%' . $search . '%')
+                ;
+            })->orWhere('tgl_tanggapan','like','%' . $search . '%')
+            ->orWhere('tanggapan','like','%' . $search . '%')
             ;
         });
     }

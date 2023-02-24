@@ -23,7 +23,7 @@
   </div>
   <main class="col-lg-7 rounded-0 p-4 bg-merah d-flex justify-content-between align-items-end">
     <div class="col-lg-7 justify-content-center">
-      <div class=" fw-normal text-center h3 mb-4 p-2 text-dark">
+      <div class=" fw-normal text-center h3 mb-4 p-2 text-light">
         Login Aduken
       </div>
             <form action="/login" method="post" enctype="multipart/form-data">
@@ -58,10 +58,10 @@
           </div>
     </main>
     <div class="">
-      @if (session()->has('loginError'))
+      @if (session()->has('loginEmpty'))
 <div class="d-flex justify-content-center">
   <div class="alert alert-danger alert-dismissible fade show text-center " role="alert">
-    {{ session('loginError') }}
+    {{ session('loginEmpty') }}
     {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
   </div>
 </div>

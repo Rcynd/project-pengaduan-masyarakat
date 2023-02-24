@@ -46,7 +46,13 @@ class TanggapanController extends Controller
         ]);
     }
     public function destroy($id){
+        $pengaduan = Tanggapan::where('id',$id)->first();
+
         Tanggapan::where('id',$id)->delete();
+
+        Pengaduan::where('id',$pengaduan->id_pengaduan)->update([
+            'status' => '0',
+        ]);
         // Transaksi::where('id_siswa',$siswa[1])->delete();
         
         return redirect('/tanggapan')->with('sukses','Tanggapan berhasil diHapus!');

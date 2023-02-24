@@ -17,7 +17,7 @@ class RegisterController extends Controller
     }
     public function store(Request $request){
         $validatedData = $request->validate([
-            'nik' => 'required|numeric|max:9999999999999999',
+            'nik' => 'required|numeric|max:9999999999999999|unique:masyarakats',
             'nama' => 'required|max:36',
             'username' => 'required|min:3|max:25|unique:users|unique:masyarakats',
             'password' => 'required|min:6|max:255',
@@ -46,18 +46,10 @@ class RegisterController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         Masyarakat::create($validatedData);
-        User::create([
-            'nama_petugas' => $validatedData['nama'],
-            'username' => $validatedData['username'],
-            'password' => $validatedData['password'],
-            'telp' => $validatedData['telp'],
-            'level' => 'masyarakat'
-        ]);
-
         // $request->session()->flash('success', 'Registration successfull! please Login');
 
 
-        return redirect('/login')->with('sukses', 'Registration berhasil! silahkan Login');
+        return redirect('/login')->with('sukses', 'Registration berhasil! silahkan tunggu validasi dari petugas!');
     }
     public function admin(){
         $user = User::where('level','admin')->orWhere('level','petugas')->latest()->filter(request(['search']))->paginate(8)->withQueryString();
@@ -72,7 +64,7 @@ class RegisterController extends Controller
     public function push(Request $request){
         $validateData = $request->validate([
             'nama_petugas' => 'required|max:255',
-            'username' => 'required|unique:users',
+            'username' => 'required|unique:users|unique:masyarakats',
             'password' => 'required|same:ulangi_password',
             'telp' => 'required|numeric|digits_between:11,13',
             'level' => 'required'

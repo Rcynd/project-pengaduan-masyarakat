@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Detail Tanggapan</h1>
+          <h1>Detail Laporan</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -65,7 +65,7 @@
                   <div class="detail ml-5">
                     <h2 class="mt-3 text-center">Detail Pengaduan</h2>
                     <div class="image img-fluid d-flex justify-content-center col-lg-12 mb-4">
-                      <img src="{{ asset('storage/'. $tanggapan->pengaduan->foto) }}" class="col-lg-6 rounded-3 m-0 p-0 shadow-sm" alt="">
+                      <img src="{{ asset('') }}adminlte/img/photo2.png" class="col-lg-6 rounded-3 m-0 p-0 shadow-sm" alt="">
                     </div>
                   </div>
                   <div class="col-lg-12 d-flex justify-content-center mb-5">
@@ -92,7 +92,7 @@
                       <div class="col-lg-3 glass-card-t mr-4" style="height:140px;">
                         <ul class="mt-2" style="list-style:none;">
                           <li><p>Tanggal diTanggapi : <br> <b>{{ $tanggapan->tgl_tanggapan }}</b></p></li>
-                          <li><p>diTanggapi Oleh: <br> <b>{{ $tanggapan->petugas->nama_petugas }}</b></p></li>
+                          <li><p>diTanggapi Oleh : <br> <b>{{ $tanggapan->petugas->nama_petugas }}</b></p></li>
                         </ul>
                       </div>
                     <div class="col-lg-6 glass-card-t p-3">
@@ -101,7 +101,7 @@
                     </div>
                   </div>
                   <hr>
-                  <a class="btn glass-card-btn mb-4 ml-4" href="{{ asset('') }}tanggapan">Kembali</a>
+                  <a class="btn glass-card-btn mb-4 ml-4" href="{{ asset('') }}laporan">Kembali</a>
                   </div>
                   <!-- /.card -->
             </div>

@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('content')
-    <h1 class="text-center pt-2 pb-2">Halaman Registrasi</h1>
+
+
+    <h1 class="text-center pt-2 pb-2">Halaman Laporan</h1>
   @if (session()->has('sukses'))
   <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
     <div class="text-success d-flex justify-content-center align-items-center">
@@ -14,6 +16,9 @@
             <div class="col-12">
               <div class="card glass-card-t">
                 <div class="card-header bg-none">
+                  @can('admin')
+                  <a href="{{ asset('') }}cetak-laporan" target="blank_" class="btn ml-2 deeefloat-left tombol-tambah mt-2">Cetak Laporan</a>
+                  @endcan
                       <form class="input-group input-group-sm col-lg-5 mr-2 mt-3 float-right" action="/pengaduan" method="get">
                         @csrf
                         <div class="input-group mb-3">
@@ -38,7 +43,7 @@
                     </thead>
                     <tbody class="p-0">
                         @foreach ($tanggapans as $tanggapan)
-                        @if ($tanggapan->pengaduan->status == 'selesai')
+                        @if ($tanggapan->pengaduan->status != '0')
                         <tr>
                             <td>{{ $tanggapan->petugas->nama_petugas }}</td>
                             <td>{{ $tanggapan->pengaduan->masyarakat->nama }}</td>
@@ -50,21 +55,13 @@
                           @else
                           <td class="text-success">Selesai</td>
                           @endif
-                          <td>{{ $tanggapan->tanggapan }}</td>
+                          <td>{{ Str::limit($tanggapan->tanggapan, 30, '...') }}</td>
                           {{-- <td>{{ $user->id_spp }}</td> --}}
                           <td class="d-flex justify-content-end">
                             <p class="text-dark" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-circle mr-2 hov"></i></p>
                             <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
-                                <a href="{{ asset('') }}tanggapan/detail/{{ $tanggapan->id }}" class="dropdown-item">
+                                <a href="{{ asset('') }}laporan/detail/{{ $tanggapan->id }}" class="dropdown-item">
                                     detail
-                                </a>
-                                @if ($tanggapan->pengaduan->status == 'proses')
-                                <a href="{{ asset('') }}tanggapan/selesai/{{ $tanggapan->pengaduan->id }}" class="dropdown-item">
-                                    selesai
-                                </a>
-                                @endif
-                                <a href="{{ asset('') }}tanggapan/hapus/{{ $tanggapan->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
-                                    hapus
                                 </a>
                             </div>
                         </td>

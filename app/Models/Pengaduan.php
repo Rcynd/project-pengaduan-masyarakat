@@ -12,10 +12,13 @@ class Pengaduan extends Model
 
     public function scopeFilter($query, array $filters){
         $query->when($filters['search'] ?? false, function($query, $search){
-            return $query->where('nik','like','%'. $search .'%')
-            ->orWhere('tgl_pengaduan','like',$search . '%')
-            ->orWhere('isi_laporan','like',$search . '%')
-            ->orWhere('status','like','%'. $search .'%')
+            return $query->whereHas('masyarakat', function($query) use ($search){
+                $query->where('nik','like','%' . $search . '%')
+                ->orWhere('nama','like','%' . $search . '%')
+                ->orWhere('username','like','%' . $search . '%')
+                ;
+            })->orWhere('tgl_pengaduan','like','%' . $search . '%')
+            ->orWhere('isi_laporan','like','%' . $search . '%')
             ;
         });
     }

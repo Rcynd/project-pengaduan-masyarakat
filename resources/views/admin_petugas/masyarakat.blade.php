@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+
     <h1 class="text-center pt-2 pb-2">Halaman Registrasi Masyarakat</h1>
   @if (session()->has('sukses'))
   <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
@@ -35,6 +37,7 @@
                         <th>Nama</th>
                         <th>Username</th>
                         <th>No Telepon</th>
+                        <th>Validasi</th>
                         {{-- <th>id_spp</th> --}}
                         <th class="text-right">aksi</th>
                       </tr>
@@ -46,6 +49,11 @@
                           <td>{{ $masyarakat->nama }}</td>
                           <td>{{ $masyarakat->username }}</td>
                           <td>{{ $masyarakat->telp }}</td>
+                          @if ($masyarakat->isValidate == 'notValidate')
+                              <td class="text-danger"> belum diValidasi </td>
+                          @else
+                              <td class="text-success"> sudah diValidasi </td>
+                          @endif
                           {{-- <td>{{ $user->id_spp }}</td> --}}
                           <td class="d-flex justify-content-end">
                             <p class="text-dark" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-circle mr-2 hov"></i></p>
@@ -53,6 +61,16 @@
                                 <a href="{{ asset('') }}masyarakat/hapus/{{ $masyarakat->username }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
                                     Hapus
                                 </a>
+                                <form action="{{ asset('') }}masyarakat/validasi/{{ $masyarakat->nik }}" method="post" enctype="multipart/form-data">
+                                  @csrf
+                                  <input type="hidden" name="nama_petugas" value="{{ $masyarakat->nama }}">
+                                  <input type="hidden" name="username" value="{{ $masyarakat->username }}">
+                                  <input type="hidden" name="password" value="{{ $masyarakat->password }}">
+                                  <input type="hidden" name="telp" value="{{ $masyarakat->telp }}">
+                                  <input type="hidden" name="level" value="masyarakat">
+                                  <label for="kirim" class="dropdown-item font-weight-normal" onclick="return confirm(' Validasi Data ini?')"> Validasi </label>
+                                  <input id="kirim" type="submit" value="" style="position:absolute; background-color: rgba(0,0,0,0); border: none;z-index:-99909;">
+                                </form>
                             </div>
                           </td>
                         </tr>

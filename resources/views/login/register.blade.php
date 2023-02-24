@@ -1,6 +1,6 @@
 @extends('login.layout.main')
 @section('container')
-<div class="card col-lg-9 rounded-4 bg-hitam p-0 " style="margin-top: .2%;margin-bottom:.2%;">
+<div class="card col-lg-9 rounded-4 h-login p-0 " style="margin-top: .2%;margin-bottom:.2%;">
 
 <div class=" d-flex justify-content-center">
   <div class="">
@@ -31,7 +31,7 @@
       </a>
     </div> --}}
     <div class="col-lg-12 justify-content-center">
-      <div class=" fw-normal text-center h3 mb-4 p-2 text-dark">
+      <div class=" fw-normal text-center h3 mb-4 p-2 text-light">
         Registrasi Aduken
       </div>
       <form action="/register" method="post" enctype="multipart/form-data">

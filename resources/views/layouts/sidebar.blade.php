@@ -44,7 +44,7 @@
             </a>
           </li>
           {{-- @endcan --}}
-          {{-- @can('admin') --}}
+          @can('admin')
           <li class="nav-item">
             <a href="/registrasi" class="nav-link text-light {{ Request::is('registrasi*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-user-plus"></i>
@@ -53,6 +53,8 @@
               </p>
             </a>
           </li>
+          @endcan
+          @can('petugas')
           <li class="nav-item">
             <a href="/masyarakat" class="nav-link text-light {{ Request::is('masyarakat*') ? 'bg-hitam rounded-pill' : '' }} ">
               <i class="nav-icon fas fa-user-plus"></i>
@@ -85,7 +87,17 @@
               </p>
             </a>
           </li>
-          {{-- @endcan --}}
+          @endcan
+          @can('masyarakat')
+          <li class="nav-item">
+            <a href="/aduan" class="nav-link text-light {{ Request::is('aduan*') ? 'bg-hitam rounded-pill' : '' }} ">
+              <i class="nav-icon fas fa-pen"></i>
+              <p>
+                Aduan
+              </p>
+            </a>
+          </li>
+          @endcan
           {{-- @can('petugas') --}}
           {{-- <li class="nav-item">
             <a href="/transaksi" class="nav-link text-light {{ Request::is('transaksi*') ? 'bg-hitam rounded-pill' : '' }} ">

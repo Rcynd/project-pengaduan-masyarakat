@@ -13,31 +13,11 @@ class LaporanController extends Controller
             'tanggapans' => $tanggapan,
         ]);
     }
-    public function store(Request $request){
-        $validatedData = $request->validate([
-            'tanggapan' => 'require',
-            'id_petugas' => '',
-            'id_pengaduan' => '',
-            'tgl_tanggapan' => '',
-        ],[
-            'nik.require' => 'isi form Tanggapan terlebih dahulu',
+    public function cetakLaporan(){
+        return view('cetak.data-laporan',[
+            'laporans' => Tanggapan::get(),
         ]);
-
-        Tanggapan::create([
-            'id_petugas' => $request->id_petugas,
-            'id_pengaduan' => $request->id_pengaduan,
-            'tgl_tanggapan' => now(),
-            'tanggapan' => $request->tangapan,
-        ]);
-        Pengaduan::where('id', $request->id_pengaduan)->update([
-            'status' => 'proses'
-        ]);
-        // $request->session()->flash('success', 'Registration successfull! please Login');
-
-
-        return redirect('/pengaduan')->with('sukses', 'Pengaduan sudah diTanggapi');
     }
-
     public function detail($id){
         $tanggapan = Tanggapan::where('id',$id)->first();
         return view('admin_petugas.laporan-detail',[

@@ -2,7 +2,7 @@
 @section('content')
 
 
-    <h1 class="text-center pt-2 pb-2">Halaman Pengaduan</h1>
+    <h1 class="text-center pt-2 pb-2">Halaman Aduan</h1>
   @if (session()->has('sukses'))
   <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
     <div class="text-success d-flex justify-content-center align-items-center">
@@ -16,6 +16,7 @@
             <div class="col-12">
               <div class="card glass-card-t">
                 <div class="card-header bg-none">
+                    <a href="{{ asset('') }}aduan/create" class="btn float-left tombol-tambah mt-2">Tambah Pengaduan</a>
                       <form class="input-group input-group-sm col-lg-5 mr-2 mt-3 float-right" action="/pengaduan" method="get">
                         @csrf
                         <div class="input-group mb-3">
@@ -29,8 +30,6 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>NIK</th>
-                        <th>Nama Pengadu</th>
                         <th>No Telepon</th>
                         <th>tanggal pengaduan</th>
                         <th>isi pengaduan</th>
@@ -42,8 +41,6 @@
                     <tbody class="p-0">
                         @foreach ($pengaduans as $pengaduan)
                         <tr>
-                          <td>{{ $pengaduan->masyarakat->nik }}</td>
-                          <td>{{ $pengaduan->masyarakat->nama }}</td>
                           <td>{{ $pengaduan->masyarakat->telp }}</td>
                           <td>{{ $pengaduan->tgl_pengaduan }}</td>
                           <td>{{ Str::limit($pengaduan->isi_laporan,30,'...') }}</td>
@@ -58,15 +55,10 @@
                           <td class="d-flex justify-content-end">
                             <p class="text-dark" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-circle mr-2 hov"></i></p>
                             <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
-                                <a href="{{ asset('') }}pengaduan/detail/{{ $pengaduan->id }}" class="dropdown-item">
+                                <a href="{{ asset('') }}aduan/detail/{{ $pengaduan->id }}" class="dropdown-item">
                                     detail
                                 </a>
-                                @if ($pengaduan->status == '0')
-                                <a href="{{ asset('') }}pengaduan/detail/{{ $pengaduan->id }}/#tanggapan" class="dropdown-item">
-                                  tanggapi
-                                </a>
-                                @endif
-                                <a href="{{ asset('') }}pengaduan/hapus/{{ $pengaduan->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
+                                <a href="{{ asset('') }}aduan/hapus/{{ $pengaduan->id }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
                                     hapus
                                 </a>
                             </div>

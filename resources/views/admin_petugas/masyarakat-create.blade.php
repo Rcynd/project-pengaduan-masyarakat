@@ -66,7 +66,7 @@
                       <!-- /.card-body -->
       
                       <div class="">
-                        <a class="btn glass-card-btn" href="{{ asset('') }}registrasi">Kembali</a>
+                        <a class="btn glass-card-btn" href="{{ asset('') }}masyarakat">Kembali</a>
                         <button type="submit" class="btn text-dark float-right glass-card-btn2">Submit</button>
                       </div>
                     </form>

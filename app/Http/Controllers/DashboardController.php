@@ -13,7 +13,8 @@ class DashboardController extends Controller
     public function index(){
         $petugas = User::where('level','admin')->orWhere('level','petugas')->get();
         $masyarakat = Masyarakat::get();
-        $pengaduan = Pengaduan::get();
+        $pengaduan = Pengaduan::where('status','0')->get();
+        $proses = Pengaduan::where('status','proses')->get();
         $tanggapan = tanggapan::get();
 
 
@@ -22,6 +23,8 @@ class DashboardController extends Controller
             'jml_petugas'=> $petugas->count(),
             'jml_pengaduan'=> $pengaduan->count(),
             'jml_tanggapan'=> $tanggapan->count(),
+            'jml_proses'=> $proses->count(),
+            'jml_aduan_ku'=> $pengaduan,
         ]);
     }
 }
