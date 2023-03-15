@@ -30,7 +30,6 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                       <tr>
-                        <th>No Telepon</th>
                         <th>tanggal pengaduan</th>
                         <th>isi pengaduan</th>
                         <th>status</th>
@@ -41,9 +40,8 @@
                     <tbody class="p-0">
                         @foreach ($pengaduans as $pengaduan)
                         <tr>
-                          <td>{{ $pengaduan->masyarakat->telp }}</td>
                           <td>{{ $pengaduan->tgl_pengaduan }}</td>
-                          <td>{{ Str::limit($pengaduan->isi_laporan,30,'...') }}</td>
+                          <td>{{ Str::limit($pengaduan->isi_laporan,45,'...') }}</td>
                             @if ($pengaduan->status == '0')
                             <td class="text-danger">Menunggu</td>
                             @elseif($pengaduan->status == 'proses')
