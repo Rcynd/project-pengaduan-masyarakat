@@ -40,10 +40,10 @@
   transition: all 0.2s ease-in-out;
 }
     .glass-cardi{
-  background: rgba(14, 51, 37,.5);
+  background: rgba(34, 34, 34,1);
   border-radius: 20px;
-  border-left: 1px solid rgba(238, 235, 245, 0.3);
-  border-top: 1px solid rgba(238, 235, 245, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
@@ -52,7 +52,7 @@
   transition: all 0.2s ease-in-out;
 }
 .bg-main{
-  background-image: linear-gradient(125deg,rgb(14, 51, 37),rgb(0, 0, 0));
+  background-image: linear-gradient(125deg,rgb(14, 51, 37),rgb(34, 34, 34));
   background-repeat: no-repeat;
 }
 .bg-hitam,.bg-sidebar{

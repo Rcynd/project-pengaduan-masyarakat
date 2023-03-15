@@ -4,9 +4,9 @@
 
     <h1 class="text-center pt-2 pb-2">Halaman Registrasi Masyarakat</h1>
   @if (session()->has('sukses'))
-  <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
-    <div class="text-success d-flex justify-content-center align-items-center">
-      <p class="p-0 m-2">{{ session('sukses') }}</p>
+  <div class="card bg-success rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+    <div class="text-light d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('sukses') }}</p>Lorem ipsum dolor sit amet.
     </div>
   </div>
   @endif
@@ -61,6 +61,7 @@
                                 <a href="{{ asset('') }}masyarakat/hapus/{{ $masyarakat->username }}" class="dropdown-item" onclick="return confirm(' Hapus Data? \n Data yang dihapus tidak bisa dikembalikan!')">
                                     Hapus
                                 </a>
+                                @if ($masyarakat->isValidate == 'notValidate')
                                 <form action="{{ asset('') }}masyarakat/validasi/{{ $masyarakat->nik }}" method="post" enctype="multipart/form-data">
                                   @csrf
                                   <input type="hidden" name="nama_petugas" value="{{ $masyarakat->nama }}">
@@ -68,10 +69,10 @@
                                   <input type="hidden" name="password" value="{{ $masyarakat->password }}">
                                   <input type="hidden" name="telp" value="{{ $masyarakat->telp }}">
                                   <input type="hidden" name="level" value="masyarakat">
-                                  <label for="kirim" class="dropdown-item font-weight-normal" onclick="return confirm(' Validasi Data ini?')"> Validasi </label>
-                                  <input id="kirim" type="submit" value="" style="position:absolute; background-color: rgba(0,0,0,0); border: none;z-index:-99909;">
+                                  <input type="submit" value="validasi" class="btn btn-none" onclick="return confirm(' Validasi Data ini?')">
                                 </form>
-                            </div>
+                                @endif
+                              </div>
                           </td>
                         </tr>
                         @endforeach

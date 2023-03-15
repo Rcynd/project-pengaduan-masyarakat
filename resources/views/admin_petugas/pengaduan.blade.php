@@ -4,8 +4,8 @@
 
     <h1 class="text-center pt-2 pb-2">Halaman Pengaduan</h1>
   @if (session()->has('sukses'))
-  <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
-    <div class="text-success d-flex justify-content-center align-items-center">
+  <div class="card bg-success rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+    <div class="text-light d-flex justify-content-center align-items-center">
       <p class="p-0 m-2">{{ session('sukses') }}</p>
     </div>
   </div>

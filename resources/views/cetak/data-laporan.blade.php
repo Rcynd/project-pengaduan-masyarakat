@@ -12,8 +12,13 @@
 @foreach ($laporans as $laporan)
 @if ($laporan->pengaduan->status == 'selesai')
 <tr>
-    <td style="display:flex; justify-content:center; align-items:center; border:none;">
+    <td style="display:flex; justify-content:center; align-items:center;">
+        @if (!isset($laporan->pengaduan->foto))
+            <p style="text-align: center;">Image not Found!</p>
+        @else
+            
         <img src="{{ asset('storage/'.$laporan->pengaduan->foto) }}" width="50" height="50" alt="{{ $laporan->pengaduan->foto }}">
+        @endif
     </td>
     <td>{{ $laporan->petugas->nama_petugas }}</td>
     <td>{{ $laporan->pengaduan->masyarakat->nama }}</td>

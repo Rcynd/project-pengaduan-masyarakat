@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class MasyarakatController extends Controller
 {
     public function index(){
-        $masyarakat = Masyarakat::latest()->filter(request(['search']))->paginate(8)->withQueryString();
+        $masyarakat = Masyarakat::latest()->filter(request(['search']))->paginate(5)->withQueryString();
         return view('admin_petugas.masyarakat',[
             'masyarakats' => $masyarakat,
         ]);

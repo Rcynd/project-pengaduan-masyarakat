@@ -9,7 +9,7 @@ use App\Models\Pengaduan;
 class TanggapanController extends Controller
 {
     public function index(){
-        $tanggapan = Tanggapan::latest()->filter(request(['search']))->paginate(8)->withQueryString();
+        $tanggapan = Tanggapan::latest()->filter(request(['search']))->paginate(5)->withQueryString();
         return view('admin_petugas.tanggapan',[
             'tanggapans' => $tanggapan,
         ]);

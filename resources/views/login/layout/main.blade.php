@@ -30,7 +30,7 @@
 }
 .bg-main{
   /* background-color: #a38ed2; */
-  background-image: linear-gradient(125deg,rgb(14, 51, 37),rgb(0, 0, 0));
+  background-image: linear-gradient(125deg,rgb(14, 51, 37),rgb(34, 34, 34));
   background-repeat: no-repeat;
 }
 .bg-hitam{

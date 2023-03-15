@@ -84,16 +84,16 @@
   transition: all ease-out;
 }
 .bg-main{
-  background-color: rgb(14, 51, 37);
-  background-image: linear-gradient(225deg,rgb(184, 255, 175),rgb(152, 251, 152));
+  background-color: rgb(34, 34, 34);
+  background-image: linear-gradient(150deg,rgb(169, 169, 169),rgb(21, 207, 136 ));
   background-repeat: no-repeat;
 }
 .bg-hitam{
   background-color: rgb(21, 207, 136);
-
+  
 }
 .bg-sidebar{
-  background-image: linear-gradient(320deg,rgb(0, 0, 0),rgb(14, 51, 37));
+  background-color: rgb(34, 34, 34);
 }
 .bg-pink{
   background-color: rgba(249, 193, 235,.3)

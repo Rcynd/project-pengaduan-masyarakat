@@ -26,7 +26,7 @@
                             @error('nik')
                               <p class="text-danger">{{ $message }}</p>
                             @enderror
-                            <input type="text" class="form-control rounded-pill" id="nik" value="{{ old('nik') }}" name="nik" placeholder="Enter No telepon">
+                            <input type="text" class="form-control rounded-pill" id="nik" value="{{ old('nik') }}" name="nik" placeholder="Enter NIK">
                         </div>
                         <div class="form-group">
                           <label for="nama">Nama</label>

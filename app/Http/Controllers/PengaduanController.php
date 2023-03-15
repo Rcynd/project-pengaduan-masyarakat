@@ -9,7 +9,7 @@ use App\Models\User;
 class PengaduanController extends Controller
 {
     public function index(){
-        $pengaduan = Pengaduan::where('status','0')->latest()->filter(request(['search']))->paginate(8)->withQueryString();
+        $pengaduan = Pengaduan::where('status','0')->latest()->filter(request(['search']))->paginate(5)->withQueryString();
         return view('admin_petugas.pengaduan',[
             'pengaduans' => $pengaduan,
         ]);
