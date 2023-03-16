@@ -35,8 +35,6 @@
                         <th>tanggal diTanggapi</th>
                         <th>status</th>
                         <th>isi tanggapan</th>
-                        {{-- <th>id_spp</th> --}}
-                        <th class="text-right">aksi</th>
                       </tr>
                     </thead>
                     <tbody class="p-0">
@@ -56,7 +54,7 @@
                           <td>{{ Str::limit( $tanggapan->tanggapan, 30, '...') }}</td>
                           {{-- <td>{{ $user->id_spp }}</td> --}}
                           <td class="d-flex justify-content-end">
-                            <p class="text-dark" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-circle mr-2 hov"></i></p>
+                            <p class="btn btn-primary p-0 text-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">menu</p>
                             <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px; width:50px;">
                                 <a href="{{ asset('') }}tanggapan/detail/{{ $tanggapan->id }}" class="dropdown-item">
                                     detail
