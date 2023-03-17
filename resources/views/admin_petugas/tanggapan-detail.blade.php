@@ -77,7 +77,7 @@
                       <ul class="mt-2" style="list-style:none;">
                         <li><p>Tanggal pengaduan : <br> <b>{{ $tanggapan->pengaduan->tgl_pengaduan }}</b></p></li>
                         <li><p>Status :<br>
-                          @if ( $tanggapan->pengaduan->status === 'proses')
+                          @if ( $tanggapan->pengaduan->status === 'diproses')
                             <b class="text-primary">sedang Diproses</b>
                           @elseif( $tanggapan->pengaduan->status  === 'selesai')
                             <b class="text-success">sudah Selesai</b>

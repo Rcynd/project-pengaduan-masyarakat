@@ -31,12 +31,36 @@ class TanggapanController extends Controller
             'tanggapan' => $request->tangapan,
         ]);
         Pengaduan::where('id', $request->id_pengaduan)->update([
-            'status' => 'proses'
+            'status' => 'selesai'
         ]);
         // $request->session()->flash('success', 'Registration successfull! please Login');
 
 
         return redirect('/pengaduan')->with('sukses', 'Pengaduan sudah diTanggapi');
+    }
+    public function edit($id){
+        $tanggapan = Tanggapan::where('id',$id)->first();
+        return view('admin_petugas.tanggapan-edit',[
+            'tanggapan' => $tanggapan,
+        ]);
+    }
+    public function update(Request $request){
+        $validatedData = $request->validate([
+            'id_petugas' => '',
+            'id_tanggapan' => '',
+            'tgl_tanggapan' => '',
+        ]);
+        if (!isset($request->tangapan)) {
+            return back()->with('sukses','mohon isi deskripsi laporan');
+        }
+        Tanggapan::where('id', $request->id_tanggapan)->update([
+            'tanggapan' => $request->tangapan,
+            'id_petugas' => $request->id_petugas,
+            'tgl_tanggapan' => now(),
+        ]);
+
+        return redirect('/tanggapan')->with('sukses', 'Tanggapan Pengaduan berhasil diUbah');
+
     }
 
     public function detail($id){
@@ -51,7 +75,7 @@ class TanggapanController extends Controller
         Tanggapan::where('id',$id)->delete();
 
         Pengaduan::where('id',$pengaduan->id_pengaduan)->update([
-            'status' => '0',
+            'status' => 'menunggu',
         ]);
         // Transaksi::where('id_siswa',$siswa[1])->delete();
         

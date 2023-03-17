@@ -8,14 +8,19 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex " >
-        <div class="image">
-          <img src="{{ asset('') }}adminlte/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info" >
-          <a href="#" class="d-block text-light">{{ Auth()->user()->nama_petugas }}</a>
+      <div class=" mt-3 mb-3 d-flex justify-content-center {{ Request::is('profile*') ? 'bg-hitam rounded-pill' : '' }}" >
+          <img src="{{ asset('') }}adminlte/img/avatar5.png" width="35" height="35" class="img-circle elevation-2" alt="User Image">
+        <div class="dropdown">
+          <button class="btn btn-none text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ Auth()->user()->nama_petugas }}
+          </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" data-toggle="modal" data-target="#modal-default">profile</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#modal-change-password">ganti password</a>
+            </div>  
         </div>
       </div>
+      <hr class="bg-light mt-0 pt-0">
   
       <!-- SidebarSearch Form -->
       <div class="form-inline ">
@@ -122,3 +127,88 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><p class="text-center">Profile</p></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
+          <img src="{{ asset('') }}adminlte/img/avatar5.png" width="30%" height="30%" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="modal-footer justify-content-center">
+          <table style="font-size: 1.5rem">
+            <tr>
+              <td>Nama</td>
+              <td>: {{ auth()->user()->nama_petugas }}</td>
+            </tr>
+            <tr>
+              <td>Username</td>
+              <td>: {{ auth()->user()->username }}</td>
+            </tr>
+            <tr>
+              <td>No Telepon</td>
+              <td>: {{ auth()->user()->telp }}</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>: {{ auth()->user()->level }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer justify-content-center">
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="modal fade" id="modal-change-password">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><p class="text-center">Ganti Password</p></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body d-flex justify-content-center">
+          <form style="" action="{{ asset("change-password") }}" method="post">
+            @csrf
+            <div class="form-group">
+              <label for="password_lama">Password Lama</label>
+              @error('password_lama')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
+              <input type="password" class="form-control rounded-pill" id="password_lama" value="{{ old('password_lama') }}" name="password_lama" placeholder="Enter password lama">
+            </div>
+            <div class="form-group">
+              <label for="password_baru">Password Baru</label>
+              @error('password_baru')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
+              <input type="password" class="form-control rounded-pill" id="password_baru" value="{{ old('password_baru') }}" name="password_baru" placeholder="Enter password baru">
+            </div>
+            <div class="form-group">
+              <label for="password_baru_confirmation">Ulangi Password Baru</label>
+              @error('password_baru_confirmation')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
+              <input type="password" class="form-control rounded-pill" id="password_baru_confirmation" value="{{ old('password_baru_confirmation') }}" name="password_baru_confirmation" placeholder="Enter ulangi password">
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="submit" class="btn btn-none"><p class="text-center btn btn-primary rounded-pill">Ubah</p></button>
+          </form>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->

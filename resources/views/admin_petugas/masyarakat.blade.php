@@ -4,9 +4,16 @@
 
     <h1 class="text-center pt-2 pb-2">Halaman Registrasi Masyarakat</h1>
   @if (session()->has('sukses'))
-  <div class="card bg-success rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+  <div class="card glass-card-t rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
     <div class="text-light d-flex justify-content-center align-items-center">
       <p class="p-0 m-2">{{ session('sukses') }}</p>
+    </div>
+  </div>
+  @endif
+  @if (session()->has('change'))
+  <div class="card glass-card-t rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+    <div class="text-light d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('change') }}</p>
     </div>
   </div>
   @endif

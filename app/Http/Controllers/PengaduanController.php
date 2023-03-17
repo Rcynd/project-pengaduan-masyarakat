@@ -9,7 +9,7 @@ use App\Models\User;
 class PengaduanController extends Controller
 {
     public function index(){
-        $pengaduan = Pengaduan::where('status','0')->latest()->filter(request(['search']))->paginate(5)->withQueryString();
+        $pengaduan = Pengaduan::where('status','menunggu')->orWhere('status','diproses')->orWhere('status','ditolak')->latest()->filter(request(['search']))->paginate(5)->withQueryString();
         return view('admin_petugas.pengaduan',[
             'pengaduans' => $pengaduan,
         ]);
@@ -84,6 +84,11 @@ class PengaduanController extends Controller
 
     public function detail($id){
         $pengaduan = Pengaduan::where('id',$id)->first();
+        if($pengaduan->status != 'ditolak'){
+            Pengaduan::where('id',$id)->update([
+                'status' => 'diproses'
+            ]);
+        }
         return view('admin_petugas.pengaduan-detail',[
             'pengaduan' => $pengaduan,
         ]);
@@ -105,8 +110,20 @@ class PengaduanController extends Controller
         return redirect('/tanggapan')->with('sukses','pengaduan berhasil diSelesaikan!');
     }
     public function proses($id){
+        $p = Pengaduan::where('id',$id)->first();
+        dd($p->status);
+        if($p->status != 'ditolak'){
+            Pengaduan::where('id',$id)->update([
+                'status' => 'diproses',
+            ]);
+        }
+        // Transaksi::where('id_siswa',$siswa[1])->delete();
+        
+        return redirect('/pengaduan');
+    }
+    public function ditolak($id){
         Pengaduan::where('id',$id)->update([
-            'status' => 'proses',
+            'status' => 'ditolak',
         ]);
         // Transaksi::where('id_siswa',$siswa[1])->delete();
         
@@ -114,7 +131,7 @@ class PengaduanController extends Controller
     }
     public function reset($id){
         Pengaduan::where('id',$id)->update([
-            'status' => '0',
+            'status' => 'menunggu',
         ]);
         // Transaksi::where('id_siswa',$siswa[1])->delete();
         

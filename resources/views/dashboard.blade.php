@@ -13,12 +13,19 @@
     </div>
   </div>
   @endif
+  @if (session()->has('change'))
+  <div class="card glass-card-t m-3" data-bs-dismiss="alert" aria-label="Close">
+    <div class="text-success d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('change') }}</p>
+    </div>
+  </div>
+  @endif
     <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row d-flex justify-content-center">
           @can('admin')
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ asset('registrasi') }}" class="col-12 col-sm-6 col-md-3 text-dark">
             <div class="info-box glass-card mb-3">
               <span class="info-box-icon bg-hitam elevation-1"><i class="fas fa-user"></i></span>
 
@@ -29,13 +36,13 @@
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-          </div>
+          </a>
           <!-- /.col -->
           @endcan
           @can('petugas')
-          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ asset('masyarakat') }}" class="col-12 col-sm-6 col-md-3 text-dark">
             <div class="info-box glass-card mb-3">
-              <span class="info-box-icon bg-pink elevation-1"><i class="fas fa-user"></i></span>
+              <span class="info-box-icon bg-pink elevation-1"><i class="fas fa-user text-light"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">User Masyarakat</span>
@@ -44,9 +51,9 @@
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-          </div>
+          </a>
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ asset('pengaduan') }}" class="col-12 col-sm-6 col-md-3 text-dark">
             <div class="info-box glass-card mb-3">
               <span class="info-box-icon bg-hitam elevation-1"><i class="fas fa-comment"></i></span>
 
@@ -57,22 +64,22 @@
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-          </div>
+          </a>
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ asset('pengaduan') }}" class="col-12 col-sm-6 col-md-3 text-dark">
             <div class="info-box glass-card mb-3">
               <span class="info-box-icon bg-pink elevation-1"><i class="fas fa-spinner"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Pengaduan diProses</span>
+                <span class="info-box-text">Pengaduan diBaca</span>
                 <span class="info-box-number">{{ number_format($jml_proses) }} <i class="font-weight-light">pengaduan</i></span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-          </div>
+          </a>
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
+          <a href="{{ asset('tanggapan') }}" class="col-12 col-sm-6 col-md-3 text-dark">
             <div class="info-box glass-card mb-3">
               <span class="info-box-icon bg-pink elevation-1"><i class="fas fa-comments"></i></span>
 
@@ -83,7 +90,22 @@
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
-          </div>
+          </a>
+          <!-- /.col -->
+          @endcan
+          @can('masyarakat')
+          <a href="{{ asset('aduan') }}" class="col-12 col-sm-6 col-md-3 text-dark">
+            <div class="info-box glass-card mb-3">
+              <span class="info-box-icon bg-hitam elevation-1"><i class="fas fa-comment"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pengaduan Saya</span>
+                <span class="info-box-number">{{ number_format($jml_pengaduan_ku) }} <i class="font-weight-light">pengaduan</i></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </a>
           <!-- /.col -->
           @endcan
         </div>

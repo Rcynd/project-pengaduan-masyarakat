@@ -14,8 +14,10 @@ class AduanController extends Controller
     public function index(){
         $us = Masyarakat::where('username' , auth()->user()->username)->first();
         $pengaduan = Pengaduan::where('id_masyarakat',$us->id)->latest()->filter(request(['search']))->paginate(5)->withQueryString();
+        $arrayPengaduan = Pengaduan::where('id_masyarakat',$us->id)->get();
         return view('admin_petugas.aduan-masyarakat',[
             'pengaduans' => $pengaduan,
+            'arrPengaduan' => $arrayPengaduan,
         ]);
     }
     public function detail($id){

@@ -4,9 +4,16 @@
 
     <h1 class="text-center pt-2 pb-2">Halaman Pengaduan</h1>
   @if (session()->has('sukses'))
-  <div class="card bg-success rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+  <div class="card glass-card-t rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
     <div class="text-light d-flex justify-content-center align-items-center">
       <p class="p-0 m-2">{{ session('sukses') }}</p>
+    </div>
+  </div>
+  @endif
+  @if (session()->has('change'))
+  <div class="card glass-card-t rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+    <div class="text-light d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('change') }}</p>
     </div>
   </div>
   @endif
@@ -45,10 +52,12 @@
                           <td>{{ $pengaduan->masyarakat->telp }}</td>
                           <td>{{ $pengaduan->tgl_pengaduan }}</td>
                           <td>{{ Str::limit($pengaduan->isi_laporan,30,'...') }}</td>
-                            @if ($pengaduan->status == '0')
-                            <td class="text-danger">Menunggu</td>
-                            @elseif($pengaduan->status == 'proses')
-                            <td class="text-primary">diProses</td>
+                            @if ($pengaduan->status == 'menunggu')
+                            <td class="text-warning">Menunggu</td>
+                            @elseif($pengaduan->status == 'diproses')
+                            <td class="text-primary">Dibaca</td>
+                            @elseif($pengaduan->status == 'ditolak')
+                            <td class="text-danger">Ditolak</td>
                             @else
                             <td class="text-success">Selesai</td>
                             @endif
@@ -59,7 +68,7 @@
                                 <a href="{{ asset('') }}pengaduan/detail/{{ $pengaduan->id }}" class="dropdown-item">
                                     detail
                                 </a>
-                                @if ($pengaduan->status == '0')
+                                @if ($pengaduan->status != 'selesai' && $pengaduan->status != 'ditolak')
                                 <a href="{{ asset('') }}pengaduan/detail/{{ $pengaduan->id }}/#tanggapan" class="dropdown-item">
                                   tanggapi
                                 </a>

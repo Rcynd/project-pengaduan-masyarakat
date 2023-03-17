@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('tgl_pengaduan');
             $table->text('isi_laporan');
             $table->string('foto')->nullable();
-            $table->enum('status',['0','proses','selesai']);
+            $table->enum('status',['menunggu','diproses','selesai','ditolak']);
             $table->timestamps();
         });
     }

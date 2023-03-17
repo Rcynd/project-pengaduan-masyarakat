@@ -5,9 +5,16 @@
 
     <h1 class="text-center pt-2 pb-2">Halaman Tanggapan</h1>
   @if (session()->has('sukses'))
-  <div class="card bg-success rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+  <div class="card glass-card-t rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
     <div class="text-light d-flex justify-content-center align-items-center">
       <p class="p-0 m-2">{{ session('sukses') }}</p>
+    </div>
+  </div>
+  @endif
+  @if (session()->has('change'))
+  <div class="card glass-card-t rounded-pill p-1 m-3" data-bs-dismiss="alert" aria-label="Close">
+    <div class="text-light d-flex justify-content-center align-items-center">
+      <p class="p-0 m-2">{{ session('change') }}</p>
     </div>
   </div>
   @endif
@@ -39,15 +46,15 @@
                     </thead>
                     <tbody class="p-0">
                         @foreach ($tanggapans as $tanggapan)
-                        @if ($tanggapan->pengaduan->status == 'proses')
+                        @if ($tanggapan->pengaduan->status != 'menunggu')
                         <tr>
                           <td>{{ $tanggapan->petugas->nama_petugas }}</td>
                           <td>{{ $tanggapan->pengaduan->masyarakat->nama }}</td>
                           <td>{{ $tanggapan->tgl_tanggapan }}</td>
-                          @if ($tanggapan->pengaduan->status == '0')
+                          @if ($tanggapan->pengaduan->status == 'menunggu')
                           <td class="text-danger">Menunggu</td>
-                          @elseif($tanggapan->pengaduan->status == 'proses')
-                          <td class="text-primary">diProses</td>
+                          @elseif($tanggapan->pengaduan->status == 'diproses')
+                          <td class="text-primary">Dibaca</td>
                           @else
                           <td class="text-success">Selesai</td>
                           @endif
@@ -59,7 +66,10 @@
                                 <a href="{{ asset('') }}tanggapan/detail/{{ $tanggapan->id }}" class="dropdown-item">
                                     detail
                                 </a>
-                                @if ($tanggapan->pengaduan->status == 'proses')
+                                <a href="{{ asset('') }}tanggapan/edit/{{ $tanggapan->id }}" class="dropdown-item">
+                                    edit
+                                </a>
+                                @if ($tanggapan->pengaduan->status == 'diproses')
                                 <a href="{{ asset('') }}tanggapan/selesai/{{ $tanggapan->pengaduan->id }}" class="dropdown-item">
                                   selesai
                                 </a>

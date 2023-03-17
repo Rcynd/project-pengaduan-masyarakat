@@ -19,6 +19,7 @@ class Pengaduan extends Model
                 ;
             })->orWhere('tgl_pengaduan','like','%' . $search . '%')
             ->orWhere('isi_laporan','like','%' . $search . '%')
+            ->orWhere('status','like','%' . $search . '%')
             ;
         });
     }

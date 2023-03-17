@@ -23,7 +23,7 @@
                       <div class="card-body">
                         <input type="hidden" name="nik" value="{{ $nik }}">
                         <input type="hidden" name="id_masyarakat" value="{{ $id_masyarakat }}">
-                        <input type="hidden" name="status" value="0">
+                        <input type="hidden" name="status" value="menunggu">
                         <div class="form-group">
                           <label for="isi_laporan">Laporan</label>
                           @error('isi_laporan')

@@ -48,8 +48,17 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/registrasi/edit/{user:username}', [RegisterController::class, 'update']);
     Route::get('/registrasi/hapus/{user:username}', [RegisterController::class, 'destroy']);
 
-    
+    // Print Laporan
     Route::get('/cetak-laporan', [LaporanController::class, 'cetakLaporan']);
+    Route::post('/cetak-laporan-petugas', [LaporanController::class, 'cetakLaporanPetugas']);
+    Route::post('/cetak-laporan-pengadu', [LaporanController::class, 'cetakLaporanPengadu']);
+    Route::post('/cetak-laporan-tanggal', [LaporanController::class, 'cetakLaporanTanggal']);
+    
+    // Cetak PDF
+    Route::get('/cetak-laporan-pdf', [LaporanController::class, 'cetakLaporanPDF']);
+    Route::post('/cetak-laporan-petugas-pdf', [LaporanController::class, 'cetakLaporanPetugasPDF']);
+    Route::post('/cetak-laporan-pengadu-pdf', [LaporanController::class, 'cetakLaporanPengaduPDF']);
+    Route::post('/cetak-laporan-tanggal-pdf', [LaporanController::class, 'cetakLaporanTanggalPDF']);
 });
 
 Route::middleware(['petugas'])->group(function () {
@@ -70,6 +79,7 @@ Route::middleware(['petugas'])->group(function () {
 
     // Pengaduan Route
     Route::get('/pengaduan',[PengaduanController::class , 'index']);
+    Route::get('/pengaduan/tolak/{pengaduan:id}',[PengaduanController::class , 'ditolak']);
     Route::get('/pengaduan/create',[PengaduanController::class , 'create']);
     Route::post('/pengaduan/create',[PengaduanController::class , 'push']);
     Route::get('/pengaduan/edit/{user:nik}', [PengaduanController::class, 'edit']);
@@ -84,8 +94,16 @@ Route::middleware(['petugas'])->group(function () {
     Route::get('/tanggapan',[TanggapanController::class , 'index']);
     Route::post('/tanggapan/create',[TanggapanController::class , 'store']);
     Route::get('/tanggapan/detail/{user:id}', [TanggapanController::class, 'detail']);
+    Route::get('/tanggapan/edit/{user:id}', [TanggapanController::class, 'edit']);
+    Route::post('/tanggapan/edit', [TanggapanController::class, 'update']);
     Route::get('/tanggapan/selesai/{user:id}', [PengaduanController::class, 'selesai']);
     Route::get('/tanggapan/hapus/{user:id}', [TanggapanController::class, 'destroy']);
+    
+    // Filter
+    Route::post('/filter-petugas', [LaporanController::class, 'filterPetugas']);
+    Route::post('/filter-pengadu', [LaporanController::class, 'filterPengadu']);
+    Route::post('/filter-tanggal', [LaporanController::class, 'filterTanggal']);
+
     
 });
 
@@ -104,4 +122,7 @@ Route::middleware(['auth'])->group(function () {
     
     // Logout Route
     Route::post('/logout',[LoginController::class, 'logout']);
+    
+    // change password route
+    Route::post('/change-password',[LoginController::class, 'changePassword']);
 });

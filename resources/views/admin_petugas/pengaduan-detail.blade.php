@@ -54,19 +54,21 @@
                       <ul class="mt-2" style="list-style:none;">
                         <li><p>Tanggal pengaduan : <br> <b>{{ $pengaduan->tgl_pengaduan }}</b></p></li>
                         <li><p>Status :<br>
-                          @if ( $pengaduan->status === 'proses')
-                            <b class="text-primary">sedang Diproses</b>
+                          @if ( $pengaduan->status === 'diproses')
+                            <b class="text-primary">sudah diBaca</b>
                           @elseif( $pengaduan->status  === 'selesai')
                             <b class="text-success">sudah Selesai</b>
+                            @elseif($pengaduan->status  === 'ditolak')
+                            <b class="text-danger">Ditolak</b>
                           @else
-                            <b class="text-danger">Menunggu</b>
+                            <b class="text-warning">Menunggu</b>
                           @endif
                         </p></li>
                       </ul>
                     </div>
                   </div>
                   <hr>
-                  @if ($pengaduan->status == '0')
+                  @if ($pengaduan->status == 'menunggu' || $pengaduan->status == 'diproses')
                     <!-- form start -->
                     <form method="post" action="{{ asset('') }}tanggapan/create" class="mb-5" enctype="multipart/form-data">
                         @csrf
@@ -85,9 +87,12 @@
                           <input type="hidden" name="tgl_tanggapan" value="">
                       <!-- /.card-body -->
       
-                      <div class="">
+                      <div class=" d-flex justify-content-start">
                         <a class="btn glass-card-btn" href="{{ asset('') }}pengaduan">Kembali</a>
-                        <button type="submit" class="btn text-dark float-right glass-card-btn2">Kirim</button>
+                        @can('petugas')
+                        <a class="btn btn-danger rounded-pill ml-3" href="{{ asset('') }}pengaduan/tolak/{{ $pengaduan->id }}" onclick="return confirm(' Tolak Pengaduan? \n Pengaduan yang diTolak tidak bisa dikembalikan!')">Tolak</a>
+                        @endcan
+                        <button type="submit" class="btn text-dark float-right glass-card-btn2 ml-3">Kirim</button>
                       </div>
                     </form>
                     @else

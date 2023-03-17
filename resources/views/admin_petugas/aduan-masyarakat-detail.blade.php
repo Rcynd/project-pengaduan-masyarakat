@@ -32,12 +32,14 @@
                       <ul class="mt-2" style="list-style:none;">
                         <li><p>Tanggal pengaduan : <br> <b>{{ $pengaduan->tgl_pengaduan }}</b></p></li>
                         <li><p>Status :<br>
-                          @if ( $pengaduan->status === 'proses')
+                          @if ( $pengaduan->status === 'diproses')
                             <b class="text-primary">sedang Diproses</b>
                           @elseif( $pengaduan->status  === 'selesai')
                             <b class="text-success">sudah Selesai</b>
+                          @elseif( $pengaduan->status  === 'ditolak')
+                            <b class="text-danger">diTolak</b>
                           @else
-                            <b class="text-danger">Menunggu</b>
+                            <b class="text-warning">Menunggu</b>
                           @endif
                         </p></li>
                       </ul>
